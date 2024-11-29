@@ -1,0 +1,71 @@
+# Golang-specific
+/bin/
+/pkg/
+/vendor/
+/*.exe
+/*.exe~
+/*.dll
+/*.so
+/*.dylib
+*.test
+*.out
+*.log
+
+# Go module files
+go.sum
+go.work
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Nuxt 3 specific
+/node_modules/
+/.nuxt/
+/dist/
+/coverage/
+/*.log
+
+# Nuxt 3 environment files
+.env
+.env.*
+.nitro/
+
+# Lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Build and debug files
+*.log
+*.pid
+*.seed
+*.gz
+*.gzip
+*.zip
+*.tar
+*.tgz
+
+# Nuxt generated files
+*.cache
+*.output
+public/
+
+# npm debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Node modules
+node_modules/

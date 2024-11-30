@@ -16,7 +16,7 @@ export default defineNuxtConfig({
         // Include the Admin Secret in the headers
         httpLinkOptions: {
           headers: {
-            'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECRET || 'Telay5870@', // Use environment variable
+            'x-hasura-admin-secret': process.env.HASURA_ADMIN_SECRET || 'miki1219', // Use environment variable
           },
         },
       },

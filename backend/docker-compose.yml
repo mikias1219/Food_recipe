@@ -5,9 +5,9 @@ services:
     image: postgres:latest
     container_name: po_con
     environment:
-      POSTGRES_USER: telay
-      POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: uog
+      POSTGRES_USER: mikias
+      POSTGRES_PASSWORD: 1219
+      POSTGRES_DB: miki
     ports:
       - "5439:5432"
 
@@ -17,9 +17,9 @@ services:
     depends_on:
       - postgres
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://telay:123456@postgres:5432/uog
+      HASURA_GRAPHQL_DATABASE_URL: postgres://mikias:1219@postgres:5432/miki
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-      HASURA_GRAPHQL_ADMIN_SECRET: Telay5870@
+      HASURA_GRAPHQL_ADMIN_SECRET: miki1219
     ports:
       - "8082:8080"
     restart: always

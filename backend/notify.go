@@ -26,7 +26,7 @@ type EventPayload struct {
 // sendEmailnotify sends an email notification
 func sendEmailnotify(email string) error {
 	m := gomail.NewMessage()
-	m.SetHeader("From", "telaynew11@gmail.com")
+	m.SetHeader("From", "mikiyasabate003@gmail.com")
 	m.SetHeader("To", email)
 	m.SetHeader("Subject", "Registration Successful")
 	m.SetBody("text/plain", "Congratulations! Your registration is now verified.")

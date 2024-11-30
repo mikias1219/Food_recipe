@@ -14,7 +14,7 @@ import (
 )
 
 // JWT secret key
-var jwtSecret = []byte("Te$%la%ynew2580A!mba!chew5870Msg&ie@")
+var jwtSecret = []byte("0kVCpjYOsoYYI7M7nWDFDcF/hAtqo0oi")
 
 // User represents a user record in the database
 type User struct {
@@ -66,15 +66,15 @@ func ValidateCredentials(db *sql.DB, email, password string) (*User, error) {
 	}
 
 	// Log user details (hide sensitive info)
-	log.Printf("User retrieved: ID=%d, Email=%s, IsVerified=%t, Role=%s", user.ID, user.Email, user.IsVerified, user.Role)
+	log.Printf("User retrieved: ID=%s, Email=%s, IsVerified=%t, Role=%s", user.ID, user.Email, user.IsVerified, user.Role)
 
 	// Compare hashed passwords
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		log.Printf("Password mismatch for user ID: %d", user.ID)
+		log.Printf("Password mismatch for user ID: %s", user.ID) // Changed %d to %s for string ID
 		return nil, errors.New("invalid password")
 	}
 
-	log.Printf("User authenticated: ID=%d, Email=%s", user.ID, user.Email)
+	log.Printf("User authenticated: ID=%s, Email=%s", user.ID, user.Email) // Changed %d to %s for string ID
 	return &user, nil
 }
 

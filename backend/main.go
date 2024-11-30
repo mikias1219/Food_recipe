@@ -15,9 +15,9 @@ func main() {
 	// Database connection details
 	dbHost := "localhost"
 	dbPort := "5439"
-	dbUser := "telay"
-	dbPassword := "123456"
-	dbName := "uog"
+	dbUser := "mikias"
+	dbPassword := "1219"
+	dbName := "miki"
 
 	// Connection string (DSN)
 	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPassword, dbName)

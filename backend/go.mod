@@ -6,7 +6,10 @@ go 1.23.3
 
 require github.com/lib/pq v1.10.9
 
-require github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
+require (
+	github.com/golang-jwt/jwt/v5 v5.2.1
+	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
+)
 
 // require (
 // 	github.com/bytedance/sonic v1.11.6 // indirect
@@ -39,9 +42,6 @@ require github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 // )
 
 require (
-	github.com/gin-gonic/gin v1.10.0
-	github.com/graphql-go/graphql v0.8.1
-	github.com/graphql-go/handler v0.2.4
 	golang.org/x/crypto v0.29.0 // Replace with the latest version
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )

@@ -7,11 +7,11 @@
       </div>
       <nav class="flex-1">
         <ul>
-          
           <li>
             <NuxtLink
               to="/dashboard/my-recipes"
               class="block px-4 py-2 hover:bg-teal-700"
+              exact-active-class="bg-teal-700"
             >
               My Recipes
             </NuxtLink>
@@ -20,6 +20,7 @@
             <NuxtLink
               to="/dashboard/create-recipe"
               class="block px-4 py-2 hover:bg-teal-700"
+              exact-active-class="bg-teal-700"
             >
               Create Recipe
             </NuxtLink>
@@ -28,14 +29,16 @@
             <NuxtLink
               to="/dashboard/bookmarked"
               class="block px-4 py-2 hover:bg-teal-700"
+              exact-active-class="bg-teal-700"
             >
               Bookmarked Recipes
             </NuxtLink>
           </li>
-          
-          
           <li>
-            <button @click="logout" class="block px-4 py-2 hover:bg-teal-700">
+            <button
+              @click="logout"
+              class="block px-4 py-2 hover:bg-teal-700"
+            >
               Logout
             </button>
           </li>
@@ -51,7 +54,6 @@
           <h1 class="text-lg font-semibold">
             Welcome, {{ user.name }}
           </h1>
-          
         </div>
       </header>
 
@@ -118,10 +120,17 @@ onMounted(() => {
 });
 
 // Handle logout action
-const logout = () => {
-  auth.clearUser();
-  localStorage.removeItem('user');
-  router.push('/login');
+const logout = async () => {
+  try {
+    // Call logout action in Pinia store (if applicable)
+    await auth.clearUser();
+    // Remove user data from localStorage
+    localStorage.removeItem('user');
+    // Redirect to the login page
+    router.push('/login');
+  } catch (error) {
+    console.error("Logout failed", error);
+  }
 };
 </script>
 

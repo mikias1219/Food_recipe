@@ -9,6 +9,8 @@
             <li><NuxtLink to="/login" class="hover:underline">Login</NuxtLink></li>
             <li><NuxtLink to="/signup" class="hover:underline">Signup</NuxtLink></li>
             <li><NuxtLink to="/logout" class="hover:underline">Logout</NuxtLink></li>
+            <!-- Added Dashboard Link -->
+            <li><NuxtLink to="/dashboard" class="hover:underline">Dashboard</NuxtLink></li> <!-- This is the link to the dashboard -->
           </ul>
         </nav>
       </div>
@@ -29,7 +31,7 @@
 </template>
 
 <script setup>
-import { NuxtLink } from "#components";
+import { NuxtLink } from "#components";  // Ensure NuxtLink is imported
 </script>
 
 <style scoped>

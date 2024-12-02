@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"errors"
-	"log"
 	"net/http"
 	"time"
 
@@ -23,26 +22,22 @@ type User struct {
 	Password   string
 	IsVerified bool
 	Role       string
-}
-
-// LoginInput represents the structure of the login input
-type LoginInput struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	Name       string
 }
 
 // LoginOutput represents the structure of the login response
 type LoginOutput struct {
 	AccessToken string `json:"accessToken"`
-	UserID      int    `json:"userId"`
+	UserID      string `json:"userId"`
 	Role        string `json:"role"`
+	Name        string `json:"name"`
 }
 
 func GenerateJWT(userID string, role string) (string, error) {
 	claims := jwt.MapClaims{
-		"userId": userID, // Use string userID
+		"userId": userID,
 		"role":   role,
-		"exp":    time.Now().Add(time.Hour * 1).Unix(), // 1-hour expiration
+		"exp":    time.Now().Add(time.Hour * 1).Unix(),
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
@@ -50,31 +45,20 @@ func GenerateJWT(userID string, role string) (string, error) {
 
 func ValidateCredentials(db *sql.DB, email, password string) (*User, error) {
 	var user User
-	query := `SELECT id, email, password, is_verified, role FROM users WHERE email = $1 AND is_verified = true`
+	query := `SELECT id, email, password, is_verified, role, name FROM users WHERE email = $1 AND is_verified = true`
 
-	// Log the query and parameter
-	log.Printf("Executing query: %s with email: %s", query, email)
-
-	err := db.QueryRow(query, email).Scan(&user.ID, &user.Email, &user.Password, &user.IsVerified, &user.Role)
+	err := db.QueryRow(query, email).Scan(&user.ID, &user.Email, &user.Password, &user.IsVerified, &user.Role, &user.Name)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			log.Printf("No user found or user not verified for email: %s", email)
 			return nil, errors.New("invalid email or user not verified")
 		}
-		log.Printf("Database error: %v", err)
 		return nil, err
 	}
 
-	// Log user details (hide sensitive info)
-	log.Printf("User retrieved: ID=%s, Email=%s, IsVerified=%t, Role=%s", user.ID, user.Email, user.IsVerified, user.Role)
-
-	// Compare hashed passwords
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		log.Printf("Password mismatch for user ID: %s", user.ID) // Changed %d to %s for string ID
 		return nil, errors.New("invalid password")
 	}
 
-	log.Printf("User authenticated: ID=%s, Email=%s", user.ID, user.Email) // Changed %d to %s for string ID
 	return &user, nil
 }
 
@@ -82,12 +66,10 @@ func LoginHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var requestBody map[string]interface{}
 		if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {
-			log.Printf("Failed to read request body: %v", err)
 			http.Error(w, `{"message": "Invalid request payload"}`, http.StatusBadRequest)
 			return
 		}
 
-		// Parse email and password
 		var email, password string
 		if inputData, ok := requestBody["input"].(map[string]interface{}); ok {
 			if nestedInput, ok := inputData["input"].(map[string]interface{}); ok {
@@ -98,39 +80,32 @@ func LoginHandler(db *sql.DB) http.HandlerFunc {
 			}
 		}
 
-		// Validate email and password
 		if email == "" || password == "" {
-			log.Printf("Missing email or password: email=%s, password=%s", email, password)
 			http.Error(w, `{"message": "Email and password are required"}`, http.StatusBadRequest)
 			return
 		}
 
-		// Validate user credentials
 		user, err := ValidateCredentials(db, email, password)
 		if err != nil {
-			log.Printf("Login failed for email %s: %v", email, err)
 			http.Error(w, `{"message": "Invalid credentials"}`, http.StatusUnauthorized)
 			return
 		}
 
-		// Generate JWT token
 		accessToken, err := GenerateJWT(user.ID, user.Role)
 		if err != nil {
-			log.Printf("Failed to generate JWT: %v", err)
 			http.Error(w, `{"message": "Internal server error"}`, http.StatusInternalServerError)
 			return
 		}
 
-		// Respond with the generated token
 		response := map[string]interface{}{
 			"accessToken": accessToken,
 			"userId":      user.ID,
 			"role":        user.Role,
+			"name":        user.Name,
 		}
 
 		w.Header().Set("Content-Type", "application/json")
 		if err := json.NewEncoder(w).Encode(response); err != nil {
-			log.Printf("Failed to encode response: %v", err)
 			http.Error(w, `{"message": "Internal server error"}`, http.StatusInternalServerError)
 		}
 	}

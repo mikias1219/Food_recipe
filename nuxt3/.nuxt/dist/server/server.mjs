@@ -1,1 +1,1 @@
-export { default } from "file:///C:/Users/telay/Desktop/my-fullstack-app/nuxt3/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///home/mikias/Downloads/Food_recipe/nuxt3/node_modules/.pnpm/@nuxt+vite-builder@3.14.1592_@types+node@22.10.2_magicast@0.3.5_rollup@4.28.1_terser@5.37.0_t_wi5i56kmrttwzb2df35pjyxxj4/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"

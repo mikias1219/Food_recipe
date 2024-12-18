@@ -16,7 +16,7 @@ import (
 //var db *sql.DB
 
 // JWT secret key
-var jwtSecret = []byte("9ab75f7e7f6b0629ac39fbb78fa6dcef9c272948572ef0e54e092bcf7b0af857468b65e25fb93ac6468f9dbc03dce1fe0c5fa3ca11621ada361377da20c68b01")
+var jwtSecret = []byte("d89f1a304899ed8a6d236bfde6a06c6faad75552b5b2f039a6e5786c25586b8b")
 
 // User represents a user record in the database
 type User struct {

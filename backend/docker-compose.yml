@@ -10,6 +10,9 @@ services:
       POSTGRES_DB: miki
     ports:
       - "5440:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
 
   hasura:
     image: hasura/graphql-engine:latest
@@ -17,9 +20,12 @@ services:
     depends_on:
       - postgres
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://miki:1219@postgres:5432/miki
+      HASURA_GRAPHQL_DATABASE_URL: postgres://miki:1219@po_con:5432/miki
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
       HASURA_GRAPHQL_ADMIN_SECRET: miki1219
     ports:
       - "8083:8080"
     restart: always
+
+volumes:
+  postgres_data:

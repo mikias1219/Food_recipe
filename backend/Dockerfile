@@ -1,18 +1,19 @@
-# Use a base Go image
+# Start with the official Golang image
 FROM golang:1.23
 
-
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy Go files
+# Copy Go modules and application code
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
 
-# Install dependencies and build the Go app
-RUN go mod tidy && go build -o main .
+# Build the Go application
+RUN go build -o main .
 
-# Expose the application port
-EXPOSE 8081
+# Expose the port the app runs on
+EXPOSE 8085
 
 # Run the application
-CMD ["./main"]
+CMD ["."]

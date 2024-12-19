@@ -26,6 +26,29 @@ services:
     ports:
       - "8083:8080"
     restart: always
+    networks:
+      - app-network
+
+  golang:
+    build:
+      context: . # Path to your Go application directory
+    container_name: go_service
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: po_con
+      DB_PORT: 5432
+      DB_USER: miki
+      DB_PASSWORD: 1219
+      DB_NAME: miki
+    ports:
+      - "8085:8085"
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

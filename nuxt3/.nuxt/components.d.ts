@@ -41,9 +41,13 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+
       'LazyBtm': typeof import("../components/Btm.vue")['default']
     'LazyCart': typeof import("../components/Cart.vue")['default']
     'LazyCreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
+
+      'LazyCreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
+
     'LazyDelete': typeof import("../components/Delete.vue")['default']
     'LazyEdit': typeof import("../components/Edit.vue")['default']
     'LazyFetchUser': typeof import("../components/FetchUser.vue")['default']
@@ -125,8 +129,10 @@ export const Html: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+w
 export const Body: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+
 export const LazyBtm: typeof import("../components/Btm.vue")['default']
 export const LazyCart: typeof import("../components/Cart.vue")['default']
+
 export const LazyCreateRecipes: typeof import("../components/CreateRecipes.vue")['default']
 export const LazyDelete: typeof import("../components/Delete.vue")['default']
 export const LazyEdit: typeof import("../components/Edit.vue")['default']

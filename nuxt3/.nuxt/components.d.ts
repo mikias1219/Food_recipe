@@ -2,7 +2,9 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'CreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
+      'Btm': typeof import("../components/Btm.vue")['default']
+    'Cart': typeof import("../components/Cart.vue")['default']
+    'CreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
     'Delete': typeof import("../components/Delete.vue")['default']
     'Edit': typeof import("../components/Edit.vue")['default']
     'FetchUser': typeof import("../components/FetchUser.vue")['default']
@@ -11,6 +13,8 @@ interface _GlobalComponents {
     'RecipeCard': typeof import("../components/RecipeCard.vue")['default']
     'RecipeInsert': typeof import("../components/RecipeInsert.vue")['default']
     'Recipes': typeof import("../components/Recipes.vue")['default']
+    'Tocheckout': typeof import("../components/Tocheckout.vue")['default']
+    'Total': typeof import("../components/Total.vue")['default']
     'UploadImage': typeof import("../components/UploadImage.vue")['default']
     'Custom': typeof import("../components/custom.vue")['default']
     'Fetch': typeof import("../components/fetch.vue")['default']
@@ -37,7 +41,13 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+
+      'LazyBtm': typeof import("../components/Btm.vue")['default']
+    'LazyCart': typeof import("../components/Cart.vue")['default']
+    'LazyCreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
+
       'LazyCreateRecipes': typeof import("../components/CreateRecipes.vue")['default']
+
     'LazyDelete': typeof import("../components/Delete.vue")['default']
     'LazyEdit': typeof import("../components/Edit.vue")['default']
     'LazyFetchUser': typeof import("../components/FetchUser.vue")['default']
@@ -46,6 +56,8 @@ interface _GlobalComponents {
     'LazyRecipeCard': typeof import("../components/RecipeCard.vue")['default']
     'LazyRecipeInsert': typeof import("../components/RecipeInsert.vue")['default']
     'LazyRecipes': typeof import("../components/Recipes.vue")['default']
+    'LazyTocheckout': typeof import("../components/Tocheckout.vue")['default']
+    'LazyTotal': typeof import("../components/Total.vue")['default']
     'LazyUploadImage': typeof import("../components/UploadImage.vue")['default']
     'LazyCustom': typeof import("../components/custom.vue")['default']
     'LazyFetch': typeof import("../components/fetch.vue")['default']
@@ -78,6 +90,8 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const Btm: typeof import("../components/Btm.vue")['default']
+export const Cart: typeof import("../components/Cart.vue")['default']
 export const CreateRecipes: typeof import("../components/CreateRecipes.vue")['default']
 export const Delete: typeof import("../components/Delete.vue")['default']
 export const Edit: typeof import("../components/Edit.vue")['default']
@@ -87,6 +101,8 @@ export const Logout: typeof import("../components/Logout.vue")['default']
 export const RecipeCard: typeof import("../components/RecipeCard.vue")['default']
 export const RecipeInsert: typeof import("../components/RecipeInsert.vue")['default']
 export const Recipes: typeof import("../components/Recipes.vue")['default']
+export const Tocheckout: typeof import("../components/Tocheckout.vue")['default']
+export const Total: typeof import("../components/Total.vue")['default']
 export const UploadImage: typeof import("../components/UploadImage.vue")['default']
 export const Custom: typeof import("../components/custom.vue")['default']
 export const Fetch: typeof import("../components/fetch.vue")['default']
@@ -113,6 +129,10 @@ export const Html: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+w
 export const Body: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/.pnpm/nuxt@3.14.1592_@parcel+watcher@2.5.0_@types+node@22.10.2_ioredis@5.4.1_magicast@0.3.5_rollup@_vmij26jpp3svejxf3uaxjaoc7m/node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+
+export const LazyBtm: typeof import("../components/Btm.vue")['default']
+export const LazyCart: typeof import("../components/Cart.vue")['default']
+
 export const LazyCreateRecipes: typeof import("../components/CreateRecipes.vue")['default']
 export const LazyDelete: typeof import("../components/Delete.vue")['default']
 export const LazyEdit: typeof import("../components/Edit.vue")['default']
@@ -122,6 +142,8 @@ export const LazyLogout: typeof import("../components/Logout.vue")['default']
 export const LazyRecipeCard: typeof import("../components/RecipeCard.vue")['default']
 export const LazyRecipeInsert: typeof import("../components/RecipeInsert.vue")['default']
 export const LazyRecipes: typeof import("../components/Recipes.vue")['default']
+export const LazyTocheckout: typeof import("../components/Tocheckout.vue")['default']
+export const LazyTotal: typeof import("../components/Total.vue")['default']
 export const LazyUploadImage: typeof import("../components/UploadImage.vue")['default']
 export const LazyCustom: typeof import("../components/custom.vue")['default']
 export const LazyFetch: typeof import("../components/fetch.vue")['default']

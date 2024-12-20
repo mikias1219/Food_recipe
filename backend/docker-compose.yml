@@ -1,5 +1,4 @@
 
-
 services:
   postgres:
     image: postgres:latest
@@ -26,4 +25,8 @@ services:
     ports:
       - "8083:8080"
     restart: always
-    
+
+
+volumes:
+  postgres_data:
+
